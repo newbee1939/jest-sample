@@ -4,6 +4,8 @@ export type User = {
   group: "A" | "B" | "C";
 };
 
+type UserKeys = keyof User;
+
 export const groupBy = (users: User[]) => {
   return users.reduce((prev, current) => {
     const key = current.group.toString();
