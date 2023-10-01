@@ -1,15 +1,7 @@
-export type User = {
-  id: number;
-  name: string;
-  group: "A" | "B" | "C";
-};
-
-type UserKeys = keyof User;
-
-export const groupBy = <T>(values: T[], key: string) => {
+export const groupBy = <T>(values: T[], key: keyof T) => {
   return values.reduce((prev, current) => {
-    const key = current.key.toString();
-    (prev[key] || (prev[key] = [])).push(current);
+    const keyValue = String(current[key]);
+    (prev[keyValue] || (prev[keyValue] = [])).push(current);
     return prev;
-  }, {} as { [key: string]: T[] });
+  }, {} as Record<string, T[]>);
 };

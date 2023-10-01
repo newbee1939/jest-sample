@@ -1,4 +1,10 @@
-import { groupBy, User } from "./sample";
+import { groupBy } from "./sample";
+
+type User = {
+  id: number;
+  name: string;
+  group: "A" | "B" | "C";
+};
 
 describe("groupBy", () => {
   test("グループ分けする", () => {
@@ -11,7 +17,7 @@ describe("groupBy", () => {
       { id: 6, name: "sakura", group: "B" },
     ];
 
-    const result = groupBy(users);
+    const result = groupBy(users, "group");
 
     console.log(result);
 
