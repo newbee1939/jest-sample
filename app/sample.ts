@@ -6,10 +6,10 @@ export type User = {
 
 type UserKeys = keyof User;
 
-export const groupBy = (values: User[]) => {
+export const groupBy = <T>(values: T[], key: string) => {
   return values.reduce((prev, current) => {
-    const key = current.group.toString();
+    const key = current.key.toString();
     (prev[key] || (prev[key] = [])).push(current);
     return prev;
-  }, {} as { [key: string]: User[] });
+  }, {} as { [key: string]: T[] });
 };
