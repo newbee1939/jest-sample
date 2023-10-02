@@ -1,4 +1,4 @@
-import { groupBy } from "./sample";
+import { group } from "./sample";
 
 type User = {
   id: number;
@@ -6,7 +6,7 @@ type User = {
   group: "A" | "B" | "C";
 };
 
-describe("groupBy", () => {
+describe("group", () => {
   test("グループ分けする", () => {
     const users: User[] = [
       { id: 1, name: "jiro", group: "A" },
@@ -17,9 +17,7 @@ describe("groupBy", () => {
       { id: 6, name: "sakura", group: "B" },
     ];
 
-    const result = groupBy(users, "group");
-
-    console.log(result);
+    const result = group(users, "group");
 
     expect(result).toEqual({
       A: [{ id: 1, name: "jiro", group: "A" }],
